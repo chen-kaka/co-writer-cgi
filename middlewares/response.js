@@ -4,19 +4,10 @@ const _ = require('lodash');
 module.exports = function*(next) {
   try {
     yield next;
-    if(this.rspBody) {
-      this.body = this.rspBody;
-    }
-    else if(this.rspCode) {
-      this.body = this.rspBody = {
-        code: this.rspCode,
-        msg: this.rspMsg || Errors.UnknownError.msg
-      }
-    } else if(this.rspData) {
-      this.body = this.rspBody = {
-        code: 0,
-        data: this.rspData
-      }
+    //h5 跨域
+    this.set("Access-Control-Allow-Origin", "*");
+    if(this.rsp) {
+      this.body = this.rsp;
     }
   }
   catch(err) {
@@ -27,12 +18,12 @@ module.exports = function*(next) {
       err = new Error(err);
     }
     this.type = 'application/json';
-    if(err.rspBody) {
+    if(err.rsp) {
       this.status = 200;
-      this.body = err.rspBody;
+      this.body = err.rsp;
     } else {
       this.status = err.status || 500;
-      this.body = this.rspBody = {
+      this.body = this.rsp = {
         code: Errors.UnknownError.code,
         msg: err.message
       }
