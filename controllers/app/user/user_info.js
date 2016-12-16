@@ -15,7 +15,7 @@ let ERR             = require('../../../libs/errors');
 module.exports = router => {
 
     /**
-     * http://localhost:8900/app/user/user_info/info?id=234234234234
+     * http://localhost:8900/app/user/user_info/info?id=58538dcc9822d109091c1d51
      * GET
      */
     router.get('/info', function *() {
