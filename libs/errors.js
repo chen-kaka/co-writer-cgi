@@ -1,10 +1,3 @@
-/*
-* @Author: lizhonghui
-* @Date:   2016-09-08 18:49:50
-* @Last Modified by:   lizhonghui
-* @Last Modified time: 2016-09-08 19:10:24
-*/
-
 module.exports = {
   AuthError: { code: 17, msg: '用户尚未登录' },
   PermissionError: { code: 18, msg: '用户权限不足' },
