@@ -24,8 +24,8 @@ module.exports = function*(next) {
     } else {
       this.status = err.status || 500;
       this.body = this.rsp = {
-        code: Errors.UnknownError.code,
-        msg: err.message
+        err_code: Errors.UnknownError.code,
+        err_msg: err.message
       }
     }
   }

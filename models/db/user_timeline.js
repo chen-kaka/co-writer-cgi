@@ -9,7 +9,7 @@ let Schema   = require('mongoose').Schema;
 let ObjectId = mongoose.Schema.Types.ObjectId;
 let Mixed    = mongoose.Schema.Types.Mixed;
 
-//用户时间线
+//用户时间线,用于接收更新消息
 module.exports = {
     schema: {
         u_id: {type: ObjectId, ref: 'user'},  //关联用户表ID
