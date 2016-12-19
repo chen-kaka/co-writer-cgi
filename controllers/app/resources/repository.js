@@ -42,6 +42,7 @@ module.exports = router => {
             description: Joi.string().optional()
         });
 
+        console.log("==create ctx.request.body: " + JSON.stringify(ctx.request.body));
         let saveInfo;
         try {
             saveInfo = yield JoiValidatePromise(ctx.request.body, paramSchema, {allowUnknown: true});
