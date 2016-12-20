@@ -17,7 +17,7 @@ module.exports = {
         create_at: {type: Date, default: Date.now}, //创建时间
         repo_id: {type: ObjectId, ref: 'repository'},  //关联仓库表ID
         u_id: {type: ObjectId, ref: 'user'},  //关联用户表ID
-        comment: { type: String }, //节点评论
+        description: { type: String }, //节点说明
         level: {type: Number}, //层级
         node_list: Mixed,      //节点列表
         front_node: {type: ObjectId},

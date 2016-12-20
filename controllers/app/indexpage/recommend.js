@@ -24,10 +24,6 @@ module.exports = router => {
         let limit = req.limit || 10;
         let retJson = yield Recommend.queryNews(queryStr, offset, limit);
 
-        this.rsp = {
-            "err_code": 0,
-            "err_msg": "success",
-            "data": retJson
-        };
+        Commons.formatResp(this, 0, retJson);
     });
 }

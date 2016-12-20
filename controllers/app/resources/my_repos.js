@@ -2,6 +2,12 @@
  * Created by kakachan on 16/12/14.
  */
 
+let _           = require('lodash');
+let Joi         = require('joi');
+const Promise = require('bluebird');
+let JoiValidatePromise = Promise.promisify(Joi.validate);
+let Commons = require('../../../middlewares/commons');
+let ERR             = require('../../../libs/errors');
 const logger  = require('../../../libs/logger');
 let MyRepos = require('../../../service/resources/my_repos');
 
@@ -12,10 +18,6 @@ module.exports = router => {
      */
     router.get('/list', function *() {
         let retJson = yield MyRepos.queryList();
-        this.rsp = {
-            "err_code": 0,
-            "err_msg": "success",
-            "data": retJson
-        };
+        Commons.formatResp(this, 0, retJson);
     });
 }

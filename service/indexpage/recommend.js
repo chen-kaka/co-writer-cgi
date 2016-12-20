@@ -4,8 +4,6 @@
 
 let _           = require('lodash');
 let Joi         = require('joi');
-const Promise = require('bluebird');
-let JoiValidatePromise = Promise.promisify(Joi.validate);
 let Commons = require('../../middlewares/commons');
 let ERR             = require('../../libs/errors');
 const logger  = require('../../libs/logger');
