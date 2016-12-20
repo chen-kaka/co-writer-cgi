@@ -12,6 +12,9 @@ const logger  = require('../../libs/logger');
 
 let mongo = require('../../libs/mongo');
 let Repository = mongo.model('repository');
+let UserInfo = require('../user/user_info');
+
+const DEFAULT_AVATAR = 'http://img.zcool.cn/community/0116a357b569550000018c1bb34234.png';
 
 module.exports = {
     queryNews
@@ -41,6 +44,17 @@ function* queryNews(queryStr, offset, limit) {
         for (var i = 0, item; (item = resultPage[i]) != null; i++){
             item.text = item.description;
             delete item.description;
+
+            let createTime = item.created_at || new Date();
+            let created_at = createTime.getTime() / 1000;
+            item.created_at = created_at;
+
+            //组装用户信息
+            let userInfo = yield UserInfo.queryInfo(item.u_id);
+            if(userInfo){
+                item.nickname = userInfo.nickname;
+                item.avatar = userInfo.avatar || DEFAULT_AVATAR;
+            }
         }
     }
     let retJson = resultPage;
