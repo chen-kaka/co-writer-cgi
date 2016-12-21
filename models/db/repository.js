@@ -18,6 +18,7 @@ module.exports = {
         last_update: {type: Date, default: Date.now}, //最后更新时间
         u_id: {type: ObjectId, ref: 'user'},  //关联用户表ID
         description: {type: String}, //仓库描述
+        type: {type: Number, default: 0}, //类型, 包括 0:公共  1: 组共享 2: 私人
         status: {type: Number, default: 0}, //状态, 包括 0: 已创建 1: 发布
     },
     options: {
