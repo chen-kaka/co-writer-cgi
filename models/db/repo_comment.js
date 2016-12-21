@@ -9,16 +9,16 @@ let Schema   = require('mongoose').Schema;
 let ObjectId = mongoose.Schema.Types.ObjectId;
 let Mixed    = mongoose.Schema.Types.Mixed;
 
-//用户评论 -- 仓库节点
+//用户评论 -- 仓库
 module.exports = {
     schema: {
         create_at: {type: Date, default: Date.now}, //创建时间
         u_id: {type: ObjectId, ref: 'user'},  //关联用户表ID
-        node_id: {type: ObjectId, ref: 'repo_node'},  //关联仓库节点表ID
+        repo_id: {type: ObjectId, ref: 'repository'},  //关联仓库表ID
         title: { type: String }, //用户评论标题
         comment: { type: String } //用户评论
     },
     options: {
-        collection: 'comment'
+        collection: 'repo_comment'
     }
 };
