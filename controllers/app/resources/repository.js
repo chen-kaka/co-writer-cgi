@@ -39,7 +39,8 @@ module.exports = router => {
             name: Joi.string().required(),
             creator: Joi.string().required(),
             u_id: Joi.string().required(),
-            description: Joi.string().optional()
+            description: Joi.string().optional(),
+            type: Joi.number().optional()
         });
 
         console.log("==create ctx.request.body: " + JSON.stringify(ctx.request.body));
