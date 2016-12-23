@@ -2,12 +2,21 @@
  * Created by kakachan on 16/12/15.
  */
 
+let _           = require('lodash');
+let Joi         = require('joi');
+let Commons = require('../../middlewares/commons');
+let ERR             = require('../../libs/errors');
+const logger  = require('../../libs/logger');
+
+let mongo = require('../../libs/mongo');
+let Repository = mongo.model('repository');
+
 module.exports = {
     queryList
 }
 
 function *queryList() {
-
+    
     let retJson = [
         {
             "id": "41",

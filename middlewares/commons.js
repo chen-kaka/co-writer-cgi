@@ -14,17 +14,22 @@ module.exports = {
  */
 function formatResp(ctx, errCode, ret) {
     let errMsg = ret;
+
     if(errCode == 0){
         errMsg = 'succ.';
-        ctx.rsp = {
+        let retMsg = {
             "err_code": 0,
             "err_msg": "success",
             "data": ret
         };
+        console.log("===formatResp: " + JSON.stringify(retMsg));
+        ctx.rsp = retMsg;
         return;
     }
-    ctx.rsp = {
+    let retMsg = {
         "err_code": errCode,
         "err_msg": ret
     };
+    console.log("===formatResp: " + JSON.stringify(retMsg));
+    ctx.rsp = retMsg;
 }

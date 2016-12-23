@@ -19,14 +19,15 @@ module.exports = router => {
      * GET
      */
     router.get('/query', function *() {
-        let ctx = this;
-        let node_id = ctx.request.query.node_id;
+        let req = this.request.query;
+        let node_id = req.node_id;
         console.log('query node_id: ' + node_id);
         if (!node_id) {
             return Commons.formatResp(this, ERR.ParamError.code, '请输入id参数。');
         }
-
-        let retJson = yield Comment.query(node_id);
+        let offset = req.offset || 0;
+        let limit = req.limit || 10;
+        let retJson = yield Comment.query(node_id, offset, limit);
         Commons.formatResp(this, 0, retJson);
     });
 
